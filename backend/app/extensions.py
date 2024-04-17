@@ -95,9 +95,7 @@ def get_all_events():
 
     all_events = list(db.events.aggregate(pipeline))
     modified_events = [{**event, "description": update_day_to_ordinal(event["description"])} for event in all_events]
-    # return modified_events
-    print(modified_events)
-    return all_events
+    return modified_events
 
 
 def update_day_to_ordinal(description):

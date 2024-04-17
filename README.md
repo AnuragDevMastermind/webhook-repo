@@ -4,7 +4,7 @@ This is a brief description of the project.
 
 ## Demo Video
 
-[![Demo Video](https://img.shields.io/badge/Demo-Video-blue)](https://drive.google.com/file/d/144FRX1QtQ9ix7HFai9LorpycsEZ-oAZb/view?usp=drive_link)
+[![Demo Video](https://img.shields.io/badge/Demo-Video-blue)](https://drive.google.com/file/d/1OXF1UB-fGLo5DO0ITYkHaYhnake6wXZj/view?usp=sharing)
 
 ## BASE URL
 
