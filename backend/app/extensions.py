@@ -1,9 +1,6 @@
 from pymongo import MongoClient
 from datetime import datetime, timezone, timedelta
 import os
-from dotenv import load_dotenv
-
-load_dotenv()
 
 database_url = os.getenv("DATABASE_URL")
 
@@ -96,4 +93,23 @@ def get_all_events():
     }
     ]
 
-    return list(db.events.aggregate(pipeline))
+    all_events = list(db.events.aggregate(pipeline))
+    modified_events = [{**event, "description": update_day_to_ordinal(event["description"])} for event in all_events]
+    # return modified_events
+    print(modified_events)
+    return all_events
+
+
+def update_day_to_ordinal(description):
+    split_text = description.split()
+    on_index = split_text.index("on")
+    day = split_text[on_index + 1]
+    ordinal_day = ordinal(int(day))
+    return description.replace(day, ordinal_day)
+
+def ordinal(n: int):
+    if 11 <= (n % 100) <= 13:
+        suffix = 'th'
+    else:
+        suffix = ['th', 'st', 'nd', 'rd', 'th'][min(n % 10, 4)]
+    return str(n) + suffix
